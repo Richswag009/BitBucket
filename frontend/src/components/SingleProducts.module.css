@@ -1,0 +1,12 @@
+.card {
+  border: 3px solid black;
+  /* flex-basis: 100px; */
+  padding: 0 0.5em 0.5em 0.5em;
+  padding-top: 0;
+  width: 220px;
+  /* justify-content: center; */
+}
+.card_item {
+  text-align: center;
+  font-size: 1.2em;
+}
