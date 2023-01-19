@@ -7,7 +7,7 @@ const SingleProducts = ({ item, onChecked, onSubmit }) => {
     <div key={item.sku} className={classes.card}>
       <CheckBox item={item} onChecked={onChecked} onSubmit={onSubmit} />
       <div className={classes["card_item"]}>
-        <h3>{item.sku}</h3>
+        <h3>#{item.sku}</h3>
         <h3>{item.name}</h3>
         <h3>{item.price}.00$</h3>
         {item.type === "DVD" && <h3>Size: {item.attributes}</h3>}

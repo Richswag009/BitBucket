@@ -13,7 +13,7 @@ const Products = () => {
   useEffect(() => {
     const loadProducts = async () => {
       const response = await axios.get(
-        "http://localhost/Project/Backend/API/View.php"
+        "https://richesmetelewawontest.000webhostapp.com/View.php"
       );
       const data = response.data;
       SetProducts(data);
@@ -28,7 +28,7 @@ const Products = () => {
 
     const DeleteProducts = async () => {
       const response = await axios.post(
-        "http://localhost/Project/Backend/API/Delete.php",
+        "https://richesmetelewawontest.000webhostapp.com/Delete.php",
         {
           checkbox: selected,
         }
@@ -47,12 +47,12 @@ const Products = () => {
       selected.push(e.target.value);
       setSelected(selected);
     } else {
-       selected.splice(selected.indexOf(e.target.value), 1);
+      selected.splice(selected.indexOf(e.target.value), 1);
       setSelected(selected);
     }
   };
 
-  // 
+  //
   const allProducts = products.map((item, i) => {
     return (
       <SingleProducts

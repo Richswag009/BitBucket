@@ -25,18 +25,9 @@ const AddProduct = () => {
       DVD: { size },
       Furniture: { height, length, width },
     };
-    // const products = {
-    //   type: type,
-    //   sku: sku,
-    //   name: name,
-    //   price: price,
-    //   attributes: obj[type],
-    // };
-    // console.log(products);
-    // console.log(products.attributes);
 
     const response = await axios.post(
-      "http://localhost/Project/Backend/API/Insert.php",
+      "https://richesmetelewawontest.000webhostapp.com/Insert.php",
       {
         type: type,
         sku: sku,
@@ -50,16 +41,14 @@ const AddProduct = () => {
     } else {
       history("/");
     }
-
-    console.log(response);
   };
 
   // handle the form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     saveProducts();
-    // console.log(type);
   };
+
   return (
     <div className={classes.container}>
       <div className={classes.title}>
