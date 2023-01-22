@@ -11,14 +11,7 @@ use APP\Products;
 
 // Get the data 
 $jsonData = json_decode(file_get_contents('php://input'));
-
 $data =[
     'checkbox'=>$jsonData->checkbox
 ];
 $product = Products::delete($data['checkbox']);
-var_dump($product);
-
-// $data = json_decode(file_get_contents('php://input'));
-
-// $product = Products::delete($data->checkbox);
-// var_dump($product);

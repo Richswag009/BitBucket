@@ -6,7 +6,6 @@ import axios from "axios";
 
 const AddProduct = () => {
   const history = useNavigate();
-  //   const [type, setType] = useState(false);
   const [error, setError] = useState(false);
   const [type, setType] = useState("");
   const [sku, setSku] = useState("");
@@ -27,12 +26,13 @@ const AddProduct = () => {
     };
 
     const response = await axios.post(
+      // "http://Localhost/Project/Backend/API/Insert.php",
       "https://richesmetelewawontest.000webhostapp.com/Insert.php",
       {
-        type: type,
         sku: sku,
         name: name,
         price: price,
+        type: type,
         attributes: obj[type],
       }
     );
@@ -66,9 +66,10 @@ const AddProduct = () => {
 
       {/* form */}
 
+      {/* <----- form starts here ---> */}
       <form action="" method="post" id="product_form" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="">SKU</label>
+          <label htmlFor="sku">SKU</label>
           <input
             type="text"
             name="sku"
@@ -84,8 +85,9 @@ const AddProduct = () => {
             <p></p>
           )}
         </div>
+
         <div>
-          <label htmlFor="">Name</label>
+          <label htmlFor="name">Name</label>
           <input
             type="text"
             name="name"
@@ -96,6 +98,7 @@ const AddProduct = () => {
             required
           />
         </div>
+
         <div>
           <label htmlFor="">Price ($)</label>
           <input
@@ -120,15 +123,21 @@ const AddProduct = () => {
             required
           >
             <option value="">Type Switcher</option>
-            <option value="Furniture">Furniture</option>
-            <option value="Book">Book</option>
-            <option value="DVD">DVD</option>
+            <option name="Furniture" value="Furniture">
+              Furniture
+            </option>
+            <option name="Book" value="Book">
+              Book
+            </option>
+            <option name="DVD" value="DVD">
+              DVD
+            </option>
           </select>
         </div>
 
         {type === "DVD" && (
           <div>
-            <label htmlFor="">Size (MB)</label>
+            <label htmlFor="size">Size (MB)</label>
             <input
               type="number"
               name="size"
@@ -145,7 +154,7 @@ const AddProduct = () => {
         {type === "Furniture" && (
           <div>
             <div>
-              <label htmlFor="">Height (CM)</label>
+              <label htmlFor="height">Height (CM)</label>
               <input
                 type="number"
                 name="height"
@@ -157,7 +166,7 @@ const AddProduct = () => {
               />
             </div>
             <div>
-              <label htmlFor="">Width (CM)</label>
+              <label htmlFor="">Width(CM)</label>
               <input
                 type="number"
                 name="width"
@@ -202,6 +211,8 @@ const AddProduct = () => {
           </div>
         )}
       </form>
+
+      {/* <----- form Ends here ---> */}
     </div>
   );
 };

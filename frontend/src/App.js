@@ -13,8 +13,6 @@ const App = () => {
           </Routes>
         </div>
       </BrowserRouter>
-      {/* <Products /> */}
-      {/* </Products> */}
     </div>
   );
 };

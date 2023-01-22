@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import AddProduct from "./AddProduct";
 import classes from "./Products.module.css";
 import { Link } from "react-router-dom";
-// import list from "../data";
 import axios from "axios";
 import SingleProducts from "./SingleProducts";
 
@@ -13,32 +11,31 @@ const Products = () => {
   useEffect(() => {
     const loadProducts = async () => {
       const response = await axios.get(
+        // "http://Localhost/Project/Backend/API/View.php"
         "https://richesmetelewawontest.000webhostapp.com/View.php"
       );
       const data = response.data;
       SetProducts(data);
     };
     loadProducts();
-    return;
   }, []);
+
+  // delete products function
+  const deleteProducts = async () => {
+    await axios.post(
+      // "http://Localhost/Project/Backend/API/Delete.php",
+      "https://richesmetelewawontest.000webhostapp.com/Delete.php",
+      {
+        checkbox: selected,
+      }
+    );
+  };
 
   // handle Delete functionality
   const formSubmitHandler = (e) => {
     e.preventDefault();
-
-    const DeleteProducts = async () => {
-      const response = await axios.post(
-        "https://richesmetelewawontest.000webhostapp.com/Delete.php",
-        {
-          checkbox: selected,
-        }
-      );
-      console.log(response);
-      window.location.reload();
-    };
-    DeleteProducts();
-
-    // console.log(selected);
+    deleteProducts();
+    window.location.reload();
   };
 
   // to handle checkbox function
@@ -46,9 +43,11 @@ const Products = () => {
     if (e.target.checked) {
       selected.push(e.target.value);
       setSelected(selected);
+      console.log(selected);
     } else {
       selected.splice(selected.indexOf(e.target.value), 1);
       setSelected(selected);
+      console.log(selected);
     }
   };
 
@@ -72,8 +71,11 @@ const Products = () => {
           <Link to="/addproduct">
             <button className={classes["add_button"]}>ADD</button>
           </Link>
-          <button className={classes["delete_button"]} form="delete_products">
-            {" "}
+          <button
+            className={classes["delete_button"]}
+            form="delete_products"
+            id="delete-product-btn"
+          >
             MASS DELETE
           </button>
         </div>

@@ -15,12 +15,8 @@ $productType = [
 ];
 
 //Get the data from POST method
-$data = json_decode(file_get_contents('php://input'));
-
-
+$jsonData = json_decode(file_get_contents('php://input'));
 
 // $product
-$product= new $productType[$data->type]($data);
-if($product->create()){
-    var_dump($data);
-};
+$product= new $productType[$Jsonata->type]($data);
+$product->create();

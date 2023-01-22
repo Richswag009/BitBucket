@@ -26,13 +26,15 @@ class Database{
         );
 
 
-        try{
+        try
+        {
            $this->connection = new PDO($dsn,$this->user, $this->dbpwd,$options);
         }
-        catch(PDOException $e){
+        catch(PDOException $e)
+        {
             $this->errors = $e->getMessage(). "<br>";
 
-            }
+        }
     }
 
     public function getError(){
@@ -63,8 +65,8 @@ class Database{
     public function rowCount(){
         return $this->stmt->rowCount();
     }
-
-
+     
+//    to return single count
     public function singleCount(){
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_OBJ);
